@@ -1,0 +1,100 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 880px;
+}
+
+.entry { overflow: visible; }
+
+.bar {
+  width: 100%;
+  background: #0c0c13;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--accent);
+  transform: skewX(-10deg);
+  padding: clamp(12px, 1.8vh, 18px) clamp(16px, 2.5vw, 30px);
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.bar:hover {
+  background: #14141d;
+  translate: 8px 0;
+  box-shadow: 0 0 24px var(--accent-dim);
+}
+
+.barOpen {
+  background: var(--accent);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.barInner {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(10px, 2vw, 24px);
+  transform: skewX(10deg);
+}
+
+.num {
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--accent);
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+}
+
+.barOpen .num { color: var(--ink); }
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.4vw, 1.6rem);
+  color: var(--paper);
+}
+
+.barOpen .name { color: var(--ink); }
+
+.role {
+  margin-left: auto;
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-size: clamp(0.55rem, 1vw, 0.75rem);
+  color: var(--paper-dim);
+}
+
+.barOpen .role { color: rgba(7, 7, 11, 0.7); }
+
+.detail { overflow: hidden; margin: 0 clamp(8px, 1.5vw, 20px); }
+
+.detailInner {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  line-height: 1.6;
+  color: var(--paper-dim);
+}
+
+.badges { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.badge {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35em 0.9em;
+  transform: skewX(-12deg);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  color: var(--paper);
+}
+
+.soon {
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}

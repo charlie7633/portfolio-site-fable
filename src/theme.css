@@ -1,0 +1,96 @@
+/* ============================================================
+   GLOBAL DESIGN TOKENS — per-section accent system
+   Each routed page sets data-theme on <body> wrapper; CSS vars
+   cascade so every component picks up the section's identity.
+   ============================================================ */
+
+:root {
+  /* base palette */
+  --ink: #07070b;
+  --ink-2: #0d0d14;
+  --paper: #f4f2ee;
+  --paper-dim: rgba(244, 242, 238, 0.72);
+
+  /* section accents */
+  --c-menu: #4fc3ff;      /* landing — P3R electric blue   */
+  --c-about: #ffd166;     /* about — KH gold               */
+  --c-resume: #4fc3ff;    /* resume — engineer blue        */
+  --c-projects: #ff2e3f;  /* projects — P5 crimson         */
+  --c-art: #ff4fa3;       /* art & edits — magenta         */
+  --c-socials: #a36bff;   /* socials — violet              */
+
+  /* live accent (overridden per section) */
+  --accent: var(--c-menu);
+  --accent-glow: color-mix(in srgb, var(--accent) 55%, transparent);
+  --accent-dim: color-mix(in srgb, var(--accent) 18%, transparent);
+
+  /* type */
+  --font-display: 'Archivo Black', 'Arial Black', sans-serif;
+  --font-head: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Rajdhani', 'Segoe UI', sans-serif;
+
+  /* glass */
+  --glass-bg: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+  --glass-border: rgba(255, 255, 255, 0.14);
+}
+
+[data-theme='about']    { --accent: var(--c-about); }
+[data-theme='resume']   { --accent: var(--c-resume); }
+[data-theme='projects'] { --accent: var(--c-projects); }
+[data-theme='art']      { --accent: var(--c-art); }
+[data-theme='socials']  { --accent: var(--c-socials); }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  overflow: hidden;
+}
+
+::selection { background: var(--accent); color: var(--ink); }
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a { color: inherit; }
+
+/* shared skewed chip (used by back button, badges, toggles) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  transform: skewX(-14deg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-left: 3px solid var(--accent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.45em 1.1em;
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.chip > * { transform: skewX(14deg); }
+.chip:hover {
+  background: var(--accent-dim);
+  box-shadow: 0 0 18px var(--accent-glow);
+  transform: skewX(-14deg) translateX(4px);
+}
+
+/* scrollable content areas inside pages */
+.scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
