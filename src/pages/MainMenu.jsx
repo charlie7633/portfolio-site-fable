@@ -72,18 +72,20 @@ export default function MainMenu() {
               onMouseLeave={() => setHovered(null)}
               onClick={() => { blip('select'); navigate(item.path) }}
             >
-              {silhouette && (
-                <span className={styles.silhouette} aria-hidden="true">
-                  <img src={silhouette} alt="" />
+              <span className={styles.marker} aria-hidden="true">
+                {icon
+                  ? <img className={styles.icon} src={icon} alt="" />
+                  : <span className={styles.tri} />}
+              </span>
+              <span className={styles.bar}>
+                {silhouette && (
+                  <span className={styles.silhouette} aria-hidden="true">
+                    <img src={silhouette} alt="" />
+                  </span>
+                )}
+                <span className={styles.inner}>
+                  <span className={styles.label}>{item.label}</span>
                 </span>
-              )}
-              <span className={styles.inner}>
-                <span className={styles.marker}>
-                  {icon
-                    ? <img className={styles.icon} src={icon} alt="" />
-                    : <span className={styles.tri} />}
-                </span>
-                <span className={styles.label}>{item.label}</span>
               </span>
             </motion.button>
           )

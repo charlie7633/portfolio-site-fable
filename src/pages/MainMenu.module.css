@@ -68,10 +68,22 @@
   z-index: 10;
 }
 
-/* ---- frosted glass bar ---- */
+/* row = icon (outside) + glass bar */
 .item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  transition: translate 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.item.active { translate: -12px 0; }
+
+/* the frosted glass bar itself */
+.bar {
   position: relative;
-  width: clamp(300px, 30vw, 460px);
+  display: block;
+  width: clamp(300px, 28vw, 440px);
   overflow: hidden;
   isolation: isolate;
   background: linear-gradient(105deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.02) 60%);
@@ -81,12 +93,11 @@
   border-left: 3px solid var(--item-accent);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
   padding: clamp(12px, 1.9vh, 18px) clamp(18px, 1.8vw, 28px);
-  text-align: left;
-  transition: background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, translate 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
-/* iOS tinted-glass selected state: colour stays soft, glass stays glass */
-.item.active {
+/* iOS tinted-glass selected state */
+.item.active .bar {
   background: linear-gradient(
     105deg,
     color-mix(in srgb, var(--item-accent) 22%, rgba(255, 255, 255, 0.07)),
@@ -98,10 +109,9 @@
     0 6px 28px rgba(0, 0, 0, 0.4),
     0 0 22px color-mix(in srgb, var(--item-accent) 28%, transparent),
     inset 0 0 18px color-mix(in srgb, var(--item-accent) 10%, transparent);
-  translate: -12px 0;
 }
 
-/* silhouette artwork inside the bar, right-aligned, fades into glass */
+/* silhouette artwork inside the bar */
 .silhouette {
   position: absolute;
   inset: 0;
@@ -125,21 +135,21 @@
 
 .item.active .silhouette img { opacity: 0.6; }
 
-/* un-skewed content row */
 .inner {
   display: flex;
   align-items: center;
-  gap: 0.7em;
-  transform: skewX(8deg); /* roughly counter bar skew for readability */
+  transform: skewX(8deg);
 }
 
+/* icon sits OUTSIDE the bar, left of it, upright */
 .marker {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.1em;
-  height: 1.1em;
+  width: clamp(30px, 2.6vw, 42px);
+  height: clamp(30px, 2.6vw, 42px);
   flex: none;
+  transform: skewX(8deg); /* counter the row skew so icons stay upright */
 }
 
 .icon {
@@ -148,17 +158,17 @@
   object-fit: contain;
   filter: invert(1); /* black source icons -> white UI icons */
   opacity: 0;
-  transform: translateX(-6px);
+  transform: translateX(-8px);
   transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .tri {
-  width: 0.55em;
-  height: 0.75em;
+  width: 55%;
+  height: 70%;
   background: var(--item-accent);
   clip-path: polygon(0 0, 100% 50%, 0 100%);
   opacity: 0;
-  transform: translateX(-6px) scaleX(0);
+  transform: translateX(-8px) scaleX(0);
   transform-origin: left center;
   transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -203,6 +213,6 @@
     bottom: 10vh;
     transform: none;
   }
-  .item { width: min(86vw, 420px); }
+  .bar { width: min(78vw, 420px); }
   .identity { top: 5vh; }
 }
