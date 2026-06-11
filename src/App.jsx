@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion'
 import IntroSplash from './components/IntroSplash.jsx'
 import PageTransition from './components/PageTransition.jsx'
 import SoundToggle from './components/SoundToggle.jsx'
+import MusicWidget from './components/MusicWidget.jsx'
 import MainMenu from './pages/MainMenu.jsx'
 import About from './pages/About.jsx'
 import Resume from './pages/Resume.jsx'
@@ -49,6 +50,7 @@ export default function App() {
         </Routes>
       </AnimatePresence>
       <SoundToggle />
+      <MusicWidget />
     </>
   )
 }
