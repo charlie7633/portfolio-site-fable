@@ -11,7 +11,7 @@ import styles from './MusicWidget.module.css'
       URL (Share → Embed → copy src) to show the real player.
    ============================================================ */
 
-const SPOTIFY_EMBED_URL = null // e.g. 'https://open.spotify.com/embed/playlist/XXXX'
+const SPOTIFY_EMBED_URL = 'https://open.spotify.com/embed/playlist/6Y1Zq3qq3P4SIxRuyxYTrN?theme=0'
 const BGM_VOLUME = 0.18
 
 export default function MusicWidget() {

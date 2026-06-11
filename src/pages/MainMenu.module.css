@@ -117,13 +117,13 @@
   max-width: 65%;
   object-fit: cover;
   object-position: right center;
-  opacity: 0.55;
+  opacity: 0.3; /* preprocessed white linework on transparency */
   -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, transparent 100%);
   mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, transparent 100%);
   transform: skewX(8deg) scale(1.15); /* counter the bar skew */
 }
 
-.item.active .silhouette img { opacity: 0.85; }
+.item.active .silhouette img { opacity: 0.6; }
 
 /* un-skewed content row */
 .inner {
@@ -146,6 +146,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  filter: invert(1); /* black source icons -> white UI icons */
   opacity: 0;
   transform: translateX(-6px);
   transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
