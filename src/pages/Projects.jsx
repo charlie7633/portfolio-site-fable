@@ -4,37 +4,42 @@ import PageShell from '../components/PageShell.jsx'
 import { blip } from '../sfx.js'
 import styles from './Projects.module.css'
 
-/* Persona "party member" accordion: skewed black bars that expand.
-   [PLACEHOLDER DETAILS — links/descriptions to be replaced with
-   real repo links and copy from charlie] */
-
 const PROJECTS = [
   {
-    name: 'ACUTZ',
-    role: 'REACT NATIVE MOBILE APP',
-    desc: 'Barber-booking mobile app built in React Native. Handles scheduling, profiles, and bookings end to end.',
-    tech: ['React Native', 'JavaScript', 'Firebase'],
-    link: null,
+    name: 'AFRICAN CUTS (ACUTZ)',
+    role: 'REACT NATIVE MOBILE APP · 2025–2026',
+    desc: 'Barber-booking app built with React Native, Appwrite and Node.js. Designed a scalable NoSQL data layer using strategic denormalisation to eliminate client-side joins — O(1) lookups, 40% faster data retrieval. Found a critical abstraction leak corrupting data in the official Appwrite SDK and engineered a native HTTP REST bypass for secure multipart cloud uploads. Async database mutations and GPS hardware integration abstracted into polymorphic React custom hooks.',
+    tech: ['React Native', 'Appwrite', 'Node.js', 'NoSQL'],
+    link: 'https://github.com/charlie7633/acutz',
+    linkLabel: 'VIEW ON GITHUB ↗',
   },
   {
     name: 'SIMPLIFY MY CAR',
-    role: 'DVLA API WEB APP',
-    desc: 'Web app that pulls live vehicle data from the DVLA API and turns it into a plain-English breakdown of a car’s status, tax and MOT.',
-    tech: ['React', 'REST APIs', 'Node.js'],
-    link: null,
+    role: 'PYTHON / FLASK · DVLA API · 2024',
+    desc: 'Vehicle health-report dashboard fetching and parsing real-time DVLA API data, with query optimisation cutting response times by 55%. Built under mentorship from a PwC software engineer — industry-standard Git branching, pull-request workflows and full SDLC. Also explored AWS fundamentals including IAM roles and permissions. The app itself never shipped; the design mockup lives on.',
+    tech: ['Python', 'Flask', 'Poetry', 'DVLA API', 'AWS IAM'],
+    link: 'https://canva.link/7ypm9r2q59rmfb9',
+    linkLabel: 'VIEW DESIGN MOCKUP ↗',
   },
   {
-    name: 'TEMPEST SECURITY EXPERT',
-    role: 'THREAT-MODELING ENGINE',
-    desc: 'Security threat-modeling expert system — models attack surfaces and produces prioritised mitigations.',
-    tech: ['Python', 'Security', 'Expert Systems'],
+    name: 'TEMPEST',
+    role: 'SECURITY EXPERT · AGILE TEAM PROJECT · 2026',
+    desc: 'University team project — 8-person XP team building a code-scanning platform with a layered architecture (Input, Processing, Data/Logic, Presentation). As security expert: ran comprehensive threat modeling, enforced strict input sanitation and least-privilege for the scanner, and designed the vulnerability detection engine — regex and pattern rules catching 95% of high-priority issues like SQL injection, hard-coded secrets and deprecated cryptography. Defined the high-risk thresholds for the platform’s Technical Debt Index, cutting deployment failure rate from 15% to 2%.',
+    tech: ['Security', 'Threat Modeling', 'Regex Engine', 'XP/Agile'],
     link: null,
   },
   {
     name: 'BEATS BY DRE',
-    role: 'DATA ANALYTICS EXTERNSHIP',
-    desc: 'Consumer-insights data analytics externship: cleaned and analysed review data, built sentiment analysis, and presented findings.',
-    tech: ['Python', 'Pandas', 'Sentiment Analysis'],
+    role: 'DATA ANALYTICS EXTERNSHIP · 2025',
+    desc: 'Analysed 100+ consumer datasets with Python (Pandas/Matplotlib) and Excel to surface trends in brand perception and satisfaction. Key insight: 60% of surveyed customers didn’t know the brand was an Apple subsidiary — a finding that shaped marketing strategy. Presented visualisations and recommendations to leadership via interactive dashboards.',
+    tech: ['Python', 'Pandas', 'Matplotlib', 'Excel'],
+    link: null,
+  },
+  {
+    name: 'E-COMMERCE REBUILD',
+    role: 'FREELANCE WEB DEVELOPER · USP COLLEGE · 2021–22',
+    desc: 'Rebuilt a local client’s e-commerce architecture on WordPress with Stripe API integration for secure payments — delivering a 68% increase in sales traffic. SEO best practices and image compression significantly improved load times and organic rankings.',
+    tech: ['WordPress', 'Stripe API', 'JavaScript', 'SEO'],
     link: null,
   },
 ]
@@ -74,9 +79,11 @@ export default function Projects() {
                       <div className={styles.badges}>
                         {p.tech.map((t) => <span key={t} className={styles.badge}>{t}</span>)}
                       </div>
-                      {p.link
-                        ? <a className="chip" href={p.link} target="_blank" rel="noreferrer"><span>VIEW ON GITHUB ↗</span></a>
-                        : <span className={styles.soon}>repo link coming soon</span>}
+                      {p.link && (
+                        <a className="chip" href={p.link} target="_blank" rel="noreferrer" onMouseEnter={() => blip('hover')} onClick={() => blip('select')}>
+                          <span>{p.linkLabel}</span>
+                        </a>
+                      )}
                     </div>
                   </motion.div>
                 )}

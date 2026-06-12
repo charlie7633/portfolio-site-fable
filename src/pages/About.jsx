@@ -4,24 +4,21 @@ import PageShell from '../components/PageShell.jsx'
 import { blip } from '../sfx.js'
 import styles from './About.module.css'
 
-/* FFXVI-encyclopedia style: vertical tabs left, lore pane right.
-   [PLACEHOLDER COPY — replace with charlie's real writing] */
-
 const TABS = [
   {
     id: 'engineer',
     label: 'THE ENGINEER',
-    body: `Final-year BSc Computer Science student at Kingston University (graduating July 2026), focused on full-stack development and data. Comfortable across React, React Native, Python, and API-driven builds — from a DVLA-integrated web app to a threat-modeling engine. Looking for graduate Software Engineering and Data Analyst roles.`,
+    body: `Stack-agnostic software engineering student at Kingston University London (BSc Computer Science, predicted 2:1, graduating June 2026). I build and iterate fast across JavaScript, Python, and Java ecosystems — React Native apps with optimised NoSQL data layers, Flask dashboards on live government APIs, security tooling that catches real vulnerabilities. I started early, rebuilding a client's e-commerce architecture with Stripe integration at 17 (+68% sales traffic), and most recently turned consumer datasets into strategy as a Data Analyst Extern with Beats by Dre. Available for full-time graduate Software Engineering and Data Analyst roles from June 2026 — UK citizen, London-based.`,
   },
   {
     id: 'artist',
     label: 'THE ARTIST',
-    body: `Digital illustrator studying the fundamentals through the work of Tetsuya Nomura and Jen Zee. Character design, sharp linework, and the kind of UI sensibility this site is built on — the same eye drives both the art and the engineering.`,
+    body: `Digital illustrator working in character art and manga-style linework — you've already seen it; the silhouettes in the main menu come from the same influences I study: Tetsuya Nomura, Jen Zee, and classic shōnen panel composition. I post everything to @bycharlieboi_ on Instagram, from quick sketches to finished pieces. The same eye for composition and visual rhythm drives how I design interfaces — this site included.`,
   },
   {
     id: 'editor',
     label: 'THE EDITOR',
-    body: `Freelance video editor cutting short-form and promotional content. Pacing, rhythm and motion design carried over from 1.1k+ hours in competitive hero shooters — reading fast visual information and making things feel kinetic.`,
+    body: `Freelance video editor and content marketer since 2024. I've produced short-form content and run Instagram and TikTok campaigns for brands from local restaurants to Coca-Cola and Kingston University's own student-facing channels. As an editor I've amassed 500k+ views across client channels, grown one channel by 3,000 subscribers with a single trending series, and trained an assistant editor to keep daily upload schedules running. Trend research, pacing, and platform-native instincts — built from years of actually living on these platforms.`,
   },
 ]
 

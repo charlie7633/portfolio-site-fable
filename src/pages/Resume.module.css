@@ -1,8 +1,9 @@
 .wrap {
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 4vh, 36px);
+  gap: clamp(16px, 2.5vh, 24px);
   max-width: 980px;
+  padding-bottom: 32px;
 }
 
 .ctas {
@@ -18,23 +19,79 @@
   background: var(--accent-dim);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-}
-
-.card h3 {
+.edu h3 {
   font-family: var(--font-head);
   font-weight: 700;
   letter-spacing: 0.22em;
   font-size: 0.8rem;
   color: var(--accent);
-  margin-bottom: 0.7em;
+  margin-bottom: 0.6em;
 }
 
-.card p {
-  font-size: clamp(0.9rem, 1.3vw, 1.02rem);
-  line-height: 1.6;
+.edu p {
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  line-height: 1.5;
   color: var(--paper-dim);
+}
+
+.edu strong { color: var(--paper); }
+
+.eduSub {
+  margin-top: 0.3em;
+  font-size: 0.85rem !important;
+  opacity: 0.7;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.entry {
+  display: flex;
+  gap: clamp(14px, 2vw, 26px);
+  align-items: baseline;
+}
+
+.year {
+  font-family: var(--font-head);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  color: var(--accent);
+  flex: none;
+  width: 5.2em;
+}
+
+.entry h4 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  margin-bottom: 0.25em;
+}
+
+.entry p {
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  line-height: 1.55;
+  color: var(--paper-dim);
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4em 1em;
+  transform: skewX(-12deg);
+  background: var(--accent-dim);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
 }

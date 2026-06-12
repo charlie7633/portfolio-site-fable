@@ -3,13 +3,12 @@ import PageShell from '../components/PageShell.jsx'
 import { blip } from '../sfx.js'
 import styles from './Socials.module.css'
 
-/* [PLACEHOLDER LINKS — replace # with real profiles] */
-
 const LINKS = [
-  { label: 'GITHUB', sub: 'code & repos', href: 'https://github.com/' },
-  { label: 'LINKEDIN', sub: 'professional', href: 'https://www.linkedin.com/' },
-  { label: 'INSTAGRAM', sub: 'art & edits', href: 'https://www.instagram.com/' },
-  { label: 'TIKTOK', sub: 'video work', href: 'https://www.tiktok.com/' },
+  { label: 'GITHUB', sub: 'code & repos', href: 'https://github.com/charlie7633' },
+  { label: 'LINKEDIN', sub: 'professional', href: 'https://www.linkedin.com/in/charles-ogunsanya-b7954a206/' },
+  { label: 'ART INSTAGRAM', sub: '@bycharlieboi_', href: 'https://www.instagram.com/bycharlieboi_/' },
+  { label: 'EDITS INSTAGRAM', sub: '@charlieboi7633', href: 'https://www.instagram.com/charlieboi7633/' },
+  { label: 'X / TWITTER', sub: '@Charlie7633', href: 'https://x.com/Charlie7633' },
   { label: 'EMAIL', sub: 'charlievanity7633@gmail.com', href: 'mailto:charlievanity7633@gmail.com' },
 ]
 
