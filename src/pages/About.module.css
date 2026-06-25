@@ -1,65 +1,130 @@
-.split {
-  display: grid;
-  grid-template-columns: minmax(180px, 30%) 1fr;
-  gap: clamp(16px, 3vw, 40px);
+.spread {
+  position: relative;
   height: 100%;
+  overflow: visible;
 }
 
-.tabs {
+/* black bg + small cursor-radius reveal of a generic diamond/dot
+   pattern grid — replaces the old tabbed split layout entirely */
+.patternReveal {
+  --mx: 50%;
+  --my: 50%;
+  position: absolute;
+  inset: -40px;
+  pointer-events: none;
+  z-index: 0;
+  background-color: #000;
+  background-image:
+    radial-gradient(circle, var(--accent) 1px, transparent 1.6px),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
+  background-size: 36px 36px, 36px 36px, 36px 36px;
+  background-position: 0 0, 0 0, 18px 18px;
+  -webkit-mask-image: radial-gradient(circle 200px at var(--mx) var(--my), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 200px at var(--mx) var(--my), black 0%, transparent 100%);
+  opacity: 0.85;
+}
+
+.dek {
+  position: relative;
+  z-index: 1;
+  max-width: 56ch;
+  font-family: var(--font-head);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.5;
+  margin-bottom: clamp(20px, 3vh, 32px);
+  padding-bottom: clamp(16px, 2.5vh, 24px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(160px, 26%) 1fr;
+  gap: clamp(20px, 4vw, 56px);
+  align-items: start;
+}
+
+.portrait {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  border-right: 1px solid var(--glass-border);
+  padding-right: clamp(16px, 3vw, 32px);
+  display: flex;
+  align-items: flex-start;
+}
+
+.portrait img {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+  object-position: top;
+  opacity: 0.6;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, transparent 100%);
+  filter: drop-shadow(0 0 24px var(--accent-glow));
+}
+
+.profiles {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: clamp(20px, 3vh, 32px);
 }
 
-.tab {
+.profile {
+  position: relative;
+  padding-left: clamp(16px, 2vw, 24px);
+  border-left: 3px solid var(--accent);
+}
+
+.profileName {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  transform: skewX(-6deg);
+  margin-bottom: 0.3em;
+  display: inline-block;
+}
+
+.profileQuote {
   font-family: var(--font-head);
   font-weight: 600;
-  letter-spacing: 0.18em;
-  font-size: clamp(0.75rem, 1.3vw, 1rem);
-  color: var(--paper-dim);
-  text-align: left;
-  padding: 0.9em 1.2em;
-  transform: skewX(-12deg);
-  border: 1px solid var(--glass-border);
-  border-left: 3px solid transparent;
-  background: rgba(255, 255, 255, 0.03);
-  transition: all 0.2s ease;
-}
-
-.tab > span { display: inline-block; transform: skewX(12deg); }
-
-.tab:hover {
-  color: var(--paper);
-  border-left-color: var(--accent);
-  translate: 6px 0;
-}
-
-.tabActive {
-  color: var(--ink) !important;
-  background: var(--accent);
-  border-left-color: var(--paper);
-  box-shadow: 0 0 22px var(--accent-glow);
-  translate: 10px 0;
-}
-
-.pane { min-width: 0; }
-
-.paneTitle {
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+  font-style: italic;
   color: var(--accent);
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
   margin-bottom: 0.6em;
-  transform: skewX(-6deg);
 }
 
-.paneBody {
-  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-  line-height: 1.7;
+.profileBody {
+  font-size: clamp(0.85rem, 1.25vw, 1rem);
+  line-height: 1.65;
   color: var(--paper-dim);
-  max-width: 62ch;
+  max-width: 68ch;
+}
+
+.fileIndex {
+  position: relative;
+  z-index: 1;
+  margin-top: clamp(24px, 4vh, 40px);
+  text-align: right;
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--paper-dim);
+  opacity: 0.6;
 }
 
 @media (max-width: 720px) {
-  .split { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-  .tabs { flex-direction: row; flex-wrap: wrap; }
+  .layout { grid-template-columns: 1fr; }
+  .portrait {
+    border-right: none;
+    padding-right: 0;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 16px;
+    max-height: 30vh;
+  }
+  .portrait img { max-height: 28vh; }
 }
