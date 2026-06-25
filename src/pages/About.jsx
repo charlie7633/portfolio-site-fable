@@ -1,33 +1,36 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import PageShell from '../components/PageShell.jsx'
-import aboutArt from '../assets/silhouettes/about.png'
+import engineerArt from '../assets/silhouettes/about.png'
+import artistArt from '../assets/silhouettes/art.png'
+import editorArt from '../assets/silhouettes/socials.png'
 import styles from './About.module.css'
 
-/* Magazine-spread layout, inspired by character-profile pages
-   (FFXVI "Party People of Valisthea" style): one anchor portrait,
-   name + pull-quote + bio per profile, file index footer. */
+/* Encyclopedia / magazine-spread layout — multiple character
+   portraits at different sizes, pull-quotes, name + tagline + bio
+   blocks scattered across one page. Inspired by FFXVI's "Party
+   People of Valisthea" character-profile spread. */
 
-const PROFILES = [
-  {
-    id: 'engineer',
-    name: 'The Engineer',
-    quote: '“Available for full-time graduate roles from June 2026.”',
-    body: `Stack-agnostic software engineering student at Kingston University London (BSc Computer Science, predicted 2:1, graduating June 2026). I build and iterate fast across JavaScript, Python, and Java ecosystems — React Native apps with optimised NoSQL data layers, Flask dashboards on live government APIs, security tooling that catches real vulnerabilities. I started early, rebuilding a client's e-commerce architecture with Stripe integration at 17 (+68% sales traffic), and most recently turned consumer datasets into strategy as a Data Analyst Extern with Beats by Dre. UK citizen, London-based.`,
-  },
-  {
-    id: 'artist',
-    name: 'The Artist',
-    quote: '“The same eye for composition drives how I design interfaces.”',
-    body: `Digital illustrator working in character art and manga-style linework — you've already seen it; the silhouettes in the main menu come from the same influences I study: Tetsuya Nomura, Jen Zee, and classic shōnen panel composition. I post everything to @bycharlieboi_ on Instagram, from quick sketches to finished pieces.`,
-  },
-  {
-    id: 'editor',
-    name: 'The Editor',
-    quote: '“500k+ views across client channels.”',
-    body: `Freelance video editor and content marketer since 2024. I've produced short-form content and run Instagram and TikTok campaigns for brands from local restaurants to Coca-Cola and Kingston University's own student-facing channels. Grown one channel by 3,000 subscribers with a single trending series, and trained an assistant editor to keep daily upload schedules running.`,
-  },
-]
+const ENGINEER = {
+  name: 'The Engineer',
+  tagline: 'Ready to ship from day one',
+  body: `Stack-agnostic software engineering student at Kingston University London (BSc Computer Science, predicted 2:1, graduating June 2026). Builds and iterates fast across JavaScript, Python, and Java — React Native apps, Flask dashboards on live government APIs, security tooling that catches real vulnerabilities. Rebuilt a client's e-commerce architecture with Stripe at 17 (+68% sales traffic), and turned consumer datasets into strategy as a Data Analyst Extern with Beats by Dre.`,
+  art: engineerArt,
+}
+
+const ARTIST = {
+  name: 'The Artist',
+  tagline: 'Manga-style linework, shōnen composition',
+  body: `Digital illustrator working in character art and manga-style linework — the silhouettes across this site come from the same influences studied here: Tetsuya Nomura, Jen Zee, and classic shōnen panel composition. Everything posted to @bycharlieboi_ on Instagram, from quick sketches to finished pieces.`,
+  art: artistArt,
+}
+
+const EDITOR = {
+  name: 'The Editor',
+  tagline: 'Freelance video editor since 2024',
+  body: `Produced short-form content and ran Instagram and TikTok campaigns for brands from local restaurants to Coca-Cola and Kingston University's student-facing channels. Grew one channel by 3,000 subscribers with a single trending series, and trained an assistant editor to keep daily upload schedules running.`,
+  art: editorArt,
+}
 
 export default function About() {
   const bgRef = useRef(null)
@@ -53,32 +56,72 @@ export default function About() {
           Three roles, one builder — here's a look at the people behind every project on this site.
         </motion.p>
 
-        <div className={styles.layout}>
-          <motion.figure
-            className={styles.portrait}
+        <div className={styles.grid}>
+          {/* LEFT — big anchor portrait */}
+          <motion.div
+            className={styles.slotLeft}
             initial={{ opacity: 0, x: -24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           >
-            <img src={aboutArt} alt="" />
-          </motion.figure>
+            <figure className={styles.portraitBig}>
+              <img src={ENGINEER.art} alt="" />
+            </figure>
+            <h2 className={styles.name}>{ENGINEER.name}</h2>
+            <p className={styles.tagline}>{ENGINEER.tagline}</p>
+            <p className={styles.body}>{ENGINEER.body}</p>
+          </motion.div>
 
-          <div className={styles.profiles}>
-            {PROFILES.map((p, i) => (
-              <motion.div
-                key={p.id}
-                className={styles.profile}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <h2 className={styles.profileName}>{p.name}</h2>
-                <p className={styles.profileQuote}>{p.quote}</p>
-                <p className={styles.profileBody}>{p.body}</p>
-              </motion.div>
-            ))}
+          {/* CENTER — pull quote + medium portrait */}
+          <div className={styles.slotCenter}>
+            <motion.p
+              className={styles.pullQuote}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+            >
+              “THE SAME EYE FOR COMPOSITION DRIVES HOW I DESIGN INTERFACES.”
+            </motion.p>
+
+            <motion.div
+              className={styles.charBlock}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <figure className={styles.portraitMed}>
+                <img src={ARTIST.art} alt="" />
+              </figure>
+              <h2 className={styles.name}>{ARTIST.name}</h2>
+              <p className={styles.tagline}>{ARTIST.tagline}</p>
+              <p className={styles.body}>{ARTIST.body}</p>
+            </motion.div>
           </div>
+
+          {/* RIGHT — smaller stacked portrait */}
+          <motion.div
+            className={styles.slotRight}
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.45, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <figure className={styles.portraitSmall}>
+              <img src={EDITOR.art} alt="" />
+            </figure>
+            <h2 className={styles.name}>{EDITOR.name}</h2>
+            <p className={styles.tagline}>{EDITOR.tagline}</p>
+            <p className={styles.body}>{EDITOR.body}</p>
+          </motion.div>
         </div>
+
+        <motion.p
+          className={styles.closingQuote}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+        >
+          Every project on this site passes through all three of these people.
+        </motion.p>
 
         <div className={styles.fileIndex}>FILE 02 / 06 — ABOUT</div>
       </div>
