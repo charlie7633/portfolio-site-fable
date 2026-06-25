@@ -1,49 +1,19 @@
 .spread {
   position: relative;
-  height: auto;
-  min-height: 100%;
-}
-
-/* black bg + checkerboard + generic repeating glyph + soft center
-   vignette, masked to a small radius that follows the cursor.
-   (Structure inspired by a KH-style title screen, but the glyph is
-   an original diamond mark — not Disney/Square Enix iconography.) */
-.patternReveal {
-  --mx: 50%;
-  --my: 50%;
-  position: absolute;
-  inset: -40px;
-  pointer-events: none;
-  z-index: 0;
-  background-color: #000;
-  background-image:
-    radial-gradient(circle, var(--accent) 1.4px, transparent 1.8px),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%);
-  background-size: 56px 56px, 56px 56px, 56px 56px;
-  background-position: 28px 28px, 0 0, 28px 28px;
-  -webkit-mask-image:
-    radial-gradient(circle 230px at var(--mx) var(--my), black 0%, transparent 100%),
-    radial-gradient(circle 600px at var(--mx) var(--my), rgba(0,0,0,0.25) 0%, transparent 100%);
-  mask-image:
-    radial-gradient(circle 230px at var(--mx) var(--my), black 0%, transparent 100%),
-    radial-gradient(circle 600px at var(--mx) var(--my), rgba(0,0,0,0.25) 0%, transparent 100%);
-  -webkit-mask-composite: source-over;
-  mask-composite: add;
-  opacity: 0.9;
+  height: 100%;
 }
 
 .dek {
   position: relative;
   z-index: 1;
-  max-width: 60ch;
+  max-width: 64ch;
   font-family: var(--font-head);
-  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-size: clamp(0.8rem, 1.15vw, 0.95rem);
   font-weight: 500;
   color: var(--accent);
-  line-height: 1.5;
-  margin-bottom: clamp(20px, 3vh, 28px);
-  padding-bottom: clamp(14px, 2vh, 20px);
+  line-height: 1.4;
+  margin-bottom: clamp(10px, 1.6vh, 16px);
+  padding-bottom: clamp(8px, 1.2vh, 12px);
   border-bottom: 1px solid var(--glass-border);
 }
 
@@ -53,7 +23,7 @@
   z-index: 1;
   display: grid;
   grid-template-columns: 1.15fr 1fr 0.85fr;
-  gap: clamp(20px, 3vw, 40px);
+  gap: clamp(16px, 2.6vw, 32px);
   align-items: start;
 }
 
@@ -62,50 +32,50 @@
 .charBlock {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .slotCenter {
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 2.5vh, 24px);
+  gap: clamp(8px, 1.4vh, 14px);
 }
 
 .portraitBig img {
   width: 100%;
-  max-height: 42vh;
+  max-height: 24vh;
   object-fit: contain;
   object-position: bottom;
   opacity: 0.7;
   -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 55%, transparent 100%);
   mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 55%, transparent 100%);
-  filter: drop-shadow(0 0 26px var(--accent-glow));
+  filter: drop-shadow(0 0 22px var(--accent-glow));
 }
 
 .portraitMed img {
   display: block;
-  width: 68%;
+  width: 64%;
   margin: 0 auto;
-  max-height: 28vh;
+  max-height: 16vh;
   object-fit: contain;
   object-position: bottom;
   opacity: 0.65;
   -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 50%, transparent 100%);
   mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 50%, transparent 100%);
-  filter: drop-shadow(0 0 20px var(--accent-glow));
+  filter: drop-shadow(0 0 18px var(--accent-glow));
 }
 
 .portraitSmall img {
   display: block;
-  width: 56%;
+  width: 52%;
   margin: 0 auto;
-  max-height: 22vh;
+  max-height: 13vh;
   object-fit: contain;
   object-position: bottom;
   opacity: 0.6;
   -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 45%, transparent 100%);
   mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 45%, transparent 100%);
-  filter: drop-shadow(0 0 16px var(--accent-glow));
+  filter: drop-shadow(0 0 14px var(--accent-glow));
 }
 
 .pullQuote {
@@ -113,21 +83,21 @@
   font-weight: 700;
   font-style: italic;
   color: var(--accent);
-  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-  line-height: 1.45;
+  font-size: clamp(0.74rem, 1.05vw, 0.86rem);
+  line-height: 1.35;
   letter-spacing: 0.01em;
   text-align: center;
-  padding: 0.7em 0;
+  padding: 0.5em 0;
   border-top: 2px solid var(--accent);
   border-bottom: 2px solid var(--accent);
 }
 
 .name {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
   transform: skewX(-6deg);
   display: inline-block;
-  margin-top: 0.2em;
+  margin-top: 0.15em;
 }
 
 .tagline {
@@ -135,14 +105,14 @@
   font-weight: 600;
   text-transform: uppercase;
   color: var(--accent);
-  font-size: clamp(0.65rem, 0.95vw, 0.78rem);
-  letter-spacing: 0.06em;
-  margin-bottom: 0.3em;
+  font-size: clamp(0.6rem, 0.82vw, 0.7rem);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2em;
 }
 
 .body {
-  font-size: clamp(0.78rem, 1.05vw, 0.92rem);
-  line-height: 1.6;
+  font-size: clamp(0.68rem, 0.88vw, 0.78rem);
+  line-height: 1.45;
   color: var(--paper-dim);
 }
 
@@ -158,39 +128,45 @@
   align-self: center;
 }
 
-.closingQuote {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  max-width: 72ch;
-  margin: clamp(28px, 4vh, 44px) auto 0;
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-style: italic;
-  color: var(--paper);
-  font-size: clamp(0.92rem, 1.3vw, 1.1rem);
-  padding: clamp(14px, 2vh, 18px) 0;
-  border-top: 1px solid var(--glass-border);
-  border-bottom: 1px solid var(--glass-border);
-}
-
 .fileIndex {
   position: relative;
   z-index: 1;
-  margin-top: clamp(16px, 2.5vh, 24px);
+  margin-top: clamp(10px, 1.6vh, 16px);
   text-align: right;
   font-family: var(--font-head);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
   color: var(--paper-dim);
   opacity: 0.6;
 }
 
+/* ── full-page background pattern, rendered via PageShell's
+   backgroundLayer slot — covers header + content, not just the
+   scrollable box. Generic checkerboard + glyph + vignette, cursor
+   tracked. Original geometric marks, not Disney/Square Enix art. ── */
+.patternReveal {
+  --mx: 50vw;
+  --my: 50vh;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-color: #000;
+  background-image:
+    radial-gradient(circle, var(--accent) 1.5px, transparent 2px),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.055) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.055) 75%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.055) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.055) 75%);
+  background-size: 64px 64px, 64px 64px, 64px 64px;
+  background-position: 32px 32px, 0 0, 32px 32px;
+  -webkit-mask-image: radial-gradient(circle 360px at var(--mx) var(--my), black 0%, transparent 80%);
+  mask-image: radial-gradient(circle 360px at var(--mx) var(--my), black 0%, transparent 80%);
+}
+
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; gap: 28px; }
+  .grid { grid-template-columns: 1fr; gap: 18px; }
   .portraitBig img,
   .portraitMed img,
-  .portraitSmall img { max-height: 26vh; }
+  .portraitSmall img { max-height: 18vh; }
   .slotCenter .body, .slotRight .body,
   .slotCenter .name, .slotRight .name,
   .slotCenter .tagline, .slotRight .tagline {

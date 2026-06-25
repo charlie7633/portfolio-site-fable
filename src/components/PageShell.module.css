@@ -86,3 +86,17 @@
   padding: clamp(16px, 2.5vw, 28px);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
 }
+
+/* ── compact mode (opt-in) — smaller title, tighter spacing,
+   so dense pages can fit without scrolling ── */
+.headerCompact {
+  top: clamp(40px, 7vh, 64px);
+}
+
+.titleCompact {
+  font-size: clamp(1.5rem, 3.1vw, 2.5rem);
+}
+
+.contentCompact {
+  top: clamp(100px, 16vh, 144px);
+}
